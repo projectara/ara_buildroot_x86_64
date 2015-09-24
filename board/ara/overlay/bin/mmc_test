@@ -1,0 +1,10 @@
+#!/bin/sh
+
+echo "mount debugfs"
+mount -t debugfs debugfs /mnt
+
+echo "unbinding from mmc block"
+echo mmc0:0001 > /sys/bus/mmc/drivers/mmcblk/unbind
+
+echo "binding to mmc test"
+echo mmc0:0001 > /sys/bus/mmc/drivers/mmc_test/bind

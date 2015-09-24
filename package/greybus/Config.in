@@ -1,0 +1,8 @@
+config BR2_PACKAGE_GREYBUS
+	bool "greybus"
+	depends on BR2_LINUX_KERNEL
+	help
+	  Greybus kernel module
+
+comment "greybus needs a Linux kernel to be built"
+	depends on !BR2_LINUX_KERNEL

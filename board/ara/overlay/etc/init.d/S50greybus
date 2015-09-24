@@ -1,0 +1,45 @@
+#!/bin/sh
+#
+# Start the greybus...
+#
+
+# Debian
+mkdir -p /tmp/gbsim/hotplug-module
+
+module_addr() {
+ADDR=0x$(cat /proc/modules | grep ${1} | head -1 | grep -o '[^x]*$' | cut -d ' ' -f 1)
+}
+
+MODULES="greybus gb-es1 gb-phy gb-loopback gb-raw gb-battery gb-vibrator gb-light"
+case "$1" in
+    start)
+	echo "Starting greybus..."
+	modprobe libcomposite
+	modprobe dummy_hcd
+	mount -t configfs none /sys/kernel/config
+        for m in ${MODULES}; do
+            modprobe ${m}
+        done
+        echo ""
+        echo "If you like to use gdb, paste this after loading or add to your gdbinit file"
+
+        for m in ${MODULES}; do
+            mod=$(echo ${m} | tr '-' '_')
+            module_addr ${mod}
+            echo "add-symbol-file $GB/${m}.o ${ADDR}"
+        done
+	;;
+    stop)
+	echo -n "Stopping greybus..."
+	;;
+    restart|reload)
+	"$0" stop
+	"$0" start
+	;;
+    *)
+	echo "Usage: $0 {start|stop|restart}"
+	exit 1
+esac
+
+exit $?
+

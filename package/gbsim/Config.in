@@ -1,0 +1,12 @@
+config BR2_PACKAGE_GBSIM
+	bool "gbsim"
+	depends on BR2_TOOLCHAIN_HAS_THREADS
+	depends on BR2_PACKAGE_LIBSOC
+	depends on BR2_PACKAGE_LIBUSBG
+	help
+	  gbsim is a simulator for greybus
+
+	  https://github.com/jackmitch/libsoc
+
+comment "gbsim needs a toolchain w/ threads and libsoc, libusbg"
+	depends on !BR2_TOOLCHAIN_HAS_THREADS

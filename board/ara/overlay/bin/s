@@ -1,0 +1,5 @@
+#!/bin/sh
+
+g&
+sleep 3
+cp /etc/IID1-simple-sdio-module.mnfb /tmp/gbsim/hotplug-module/

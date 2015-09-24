@@ -1,0 +1,32 @@
+From c92dc456a3b569118b8207d8a19be43a8bcd545d Mon Sep 17 00:00:00 2001
+From: Rui Miguel Silva <rui.silva@linaro.org>
+Date: Wed, 20 May 2015 14:28:24 +0100
+Subject: [PATCH 3/3] usb: gadget: f_fs: fix check in read operation
+
+when copying to iter the size can be different then the iov count,
+the check for full iov is wrong and make any read on request which
+is not the exactly size of iov to return -EFAULT.
+
+So, just check the success of the copy.
+
+Signed-off-by: Rui Miguel Silva <rui.silva@linaro.org>
+---
+ drivers/usb/gadget/function/f_fs.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/usb/gadget/function/f_fs.c b/drivers/usb/gadget/function/f_fs.c
+index 8f893cd..b07e2ae 100644
+--- a/drivers/usb/gadget/function/f_fs.c
++++ b/drivers/usb/gadget/function/f_fs.c
+@@ -847,7 +847,7 @@ static ssize_t ffs_epfile_io(struct file *file, struct ffs_io_data *io_data)
+ 				ret = ep->status;
+ 				if (io_data->read && ret > 0) {
+ 					ret = copy_to_iter(data, ret, &io_data->data);
+-					if (unlikely(iov_iter_count(&io_data->data)))
++					if (!ret)
+ 						ret = -EFAULT;
+ 				}
+ 			}
+-- 
+2.4.2
+

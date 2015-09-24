@@ -1,0 +1,46 @@
+From 68dc0f374bbac5e06edefbd92ccd8db02ae81b4b Mon Sep 17 00:00:00 2001
+From: Rui Miguel Silva <rui.silva@linaro.org>
+Date: Mon, 18 May 2015 14:21:37 +0100
+Subject: [PATCH 2/3] usb: gadget: f_fs: add extra check before
+ unregister_gadget_item
+
+ffs_closed can race with configfs_rmdir which will call config_item_release, so
+add an extra check to avoid calling the unregister_gadget_item with an null
+gadget item.
+
+Signed-off-by: Rui Miguel Silva <rui.silva@linaro.org>
+---
+ drivers/usb/gadget/function/f_fs.c | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/usb/gadget/function/f_fs.c b/drivers/usb/gadget/function/f_fs.c
+index fa538fa..8f893cd 100644
+--- a/drivers/usb/gadget/function/f_fs.c
++++ b/drivers/usb/gadget/function/f_fs.c
+@@ -3435,6 +3435,7 @@ done:
+ static void ffs_closed(struct ffs_data *ffs)
+ {
+ 	struct ffs_dev *ffs_obj;
++	struct f_fs_opts *opts;
+ 
+ 	ENTER();
+ 	ffs_dev_lock();
+@@ -3448,8 +3449,13 @@ static void ffs_closed(struct ffs_data *ffs)
+ 	if (ffs_obj->ffs_closed_callback)
+ 		ffs_obj->ffs_closed_callback(ffs);
+ 
+-	if (!ffs_obj->opts || ffs_obj->opts->no_configfs
+-	    || !ffs_obj->opts->func_inst.group.cg_item.ci_parent)
++	if (ffs_obj->opts)
++		opts = ffs_obj->opts;
++	else
++		goto done;
++
++	if (opts->no_configfs || !opts->func_inst.group.cg_item.ci_parent
++	    || !atomic_read(&opts->func_inst.group.cg_item.ci_kref.refcount))
+ 		goto done;
+ 
+ 	unregister_gadget_item(ffs_obj->opts->
+-- 
+2.4.2
+
