@@ -1,15 +1,14 @@
-cd /home/ruisilva/manatwork/buildroot/output/build/linux-4.1.5
 add-auto-load-safe-path /
 set architecture i386:x86-64:intel
 target remote localhost:1234
 file vmlinux
 lx-symbols
 
-add-symbol-file /home/ruisilva/manatwork/buildroot/output/build/greybus-master/greybus.o 0xffffffffa001e000
-add-symbol-file /home/ruisilva/manatwork/buildroot/output/build/greybus-master/gb-es1.o 0xffffffffa002c000
-add-symbol-file /home/ruisilva/manatwork/buildroot/output/build/greybus-master/gb-phy.o 0xffffffffa0035000
-add-symbol-file /home/ruisilva/manatwork/buildroot/output/build/greybus-master/gb-loopback.o 0xffffffffa0041000
-add-symbol-file /home/ruisilva/manatwork/buildroot/output/build/greybus-master/gb-raw.o 0xffffffffa0047000
-add-symbol-file /home/ruisilva/manatwork/buildroot/output/build/greybus-master/gb-battery.o 0xffffffffa004b000
-add-symbol-file /home/ruisilva/manatwork/buildroot/output/build/greybus-master/gb-vibrator.o 0xffffffffa004f000
-add-symbol-file /home/ruisilva/manatwork/buildroot/output/build/greybus-master/gb-light.o 0xffffffffa0053000
+# add-symbol-file /path/to/buildroot/output/build/greybus-master/greybus.o 0xffffffffa001e000
+# add-symbol-file /path/to/buildroot/output/build/greybus-master/gb-es1.o 0xffffffffa002c000
+# add-symbol-file /path/to/buildroot/output/build/greybus-master/gb-phy.o 0xffffffffa0035000
+# add-symbol-file /path/to/buildroot/output/build/greybus-master/gb-loopback.o 0xffffffffa0041000
+# add-symbol-file /path/to/buildroot/output/build/greybus-master/gb-raw.o 0xffffffffa0047000
+# add-symbol-file /path/to/buildroot/output/build/greybus-master/gb-battery.o 0xffffffffa004b000
+# add-symbol-file /path/to/buildroot/output/build/greybus-master/gb-vibrator.o 0xffffffffa004f000
+# add-symbol-file /path/to/buildroot/output/build/greybus-master/gb-light.o 0xffffffffa0053000
