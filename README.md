@@ -61,7 +61,6 @@ Example output:
 Welcome to Buildroot
 buildroot login: root
 $ g&
-
 hotplug_basedir /tmp/gbsim
 verbose 1
 file system registered
@@ -73,18 +72,16 @@ usb 1-1: new high-speed USB device number 2 using dummy_hcd
 configfs-gadget gadget: high-speed config #1: config
 [D] GBSIM: USB ENABLE
 [D] GBSIM: Start SVC/CPort endpoints
-[D] GBSIM: SVC->AP handshake sent
-[D] GBSIM: USB SETUP
-[D] GBSIM: AP->AP Bridge setup message:
-[D] GBSIM:   bRequestType = 41
-[D] GBSIM:   bRequest     = 01
-[D] GBSIM:   wValue       = 0000
-[D] GBSIM:   wIndex       = 0000
-[D] GBSIM:   wLength      = 000b
-[D] GBSIM: AP->SVC message:
-  00 00 03 00 00 01 01 00 00 00 00
-  [I] GBSIM: AP handshake complete
-  [D] GBSIM: SVC -> AP ID (IID:0 DID:1) message sent
+[D] GBSIM: Module -> AP CPort 0 SVC GB_SVC_TYPE_PROTOCOL_VERSION request
+[R] GBSIM: DUMP -> 0a 00 01 00 01 00 00 00 00 01
+usb 1-1: Unknown endpoint type found, address 81
+[D] GBSIM: AP -> Module 1 CPort 0 SVC GB_SVC_TYPE_PROTOCOL_VERSION response
+[R] GBSIM: DUMP -> 0a 00 01 00 81 00 00 00 00 01
+[D] GBSIM: svc_handler_response: Version major-0 minor-1
+[D] GBSIM: Module -> AP CPort 0 SVC GB_SVC_TYPE_SVC_HELLO request
+[R] GBSIM: DUMP -> 0b 00 01 00 02 00 00 00 55 47 05
+[D] GBSIM: AP -> Module 1 CPort 0 SVC GB_SVC_TYPE_SVC_HELLO response
+[R] GBSIM: DUMP -> 08 00 01 00 82 00 00 00
 ```
 
 - To stop qemu do:
