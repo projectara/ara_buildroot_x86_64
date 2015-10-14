@@ -42,7 +42,7 @@ grab a cup of coffee!!!
 ```sh
 $ qemu-system-x86_64  -M pc -kernel output/images/bzImage \
 -drive file=output/images/rootfs.ext2,if=ide \
--append "root=/dev/sda console=ttys0,115200" -net nic,model=rtl8139 -net user \
+-append "root=/dev/sda console=ttyS0,115200" -net nic,model=rtl8139 -net user \
 -nographic -s
 ```
 
