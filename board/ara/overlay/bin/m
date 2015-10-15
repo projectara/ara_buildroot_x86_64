@@ -1,0 +1,18 @@
+#!/bin/sh
+
+# this var will contain the name of the original simlink that
+# called this script, so do not call the script directly
+MODULE=$(basename $0)
+
+# first run the necessary gbsim setup, if it is not already running
+pidof gbsim >/dev/null
+if [[ $? -ne 0 ]] ; then
+    g&
+else
+    #remove previous inserted module
+    rm -rf /tmp/gbsim/hotplug-module/*
+fi
+sleep 1
+
+# then copy the manifest file to the default target
+cp /etc/IID1-simple-${MODULE}-module.mnfb /tmp/gbsim/hotplug-module/
