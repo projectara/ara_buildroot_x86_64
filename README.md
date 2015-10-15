@@ -105,6 +105,16 @@ usb 1-1: Unknown endpoint type found, address 81
 		$ make gbsim-dirclean; make gbsim; make
 	```
 
+	- change kernel configuration:
+	```sh
+		$ make linux-menuconfig
+	```
+
+	- save current kernel configuration to repository:
+	```sh
+		$ make linux-update-defconfig
+	```
+
 go to step Run.
 
 # Debuging #
