@@ -84,6 +84,25 @@ usb 1-1: Unknown endpoint type found, address 81
 [R] GBSIM: DUMP -> 08 00 01 00 82 00 00 00
 ```
 
+- It is also possible to launch gbsim and setup a simulated module for each
+available greybus protocol. This can be done even if another protocol setup is
+already running and will replace the simulated module by the new one.
+
+- example to start sdio:
+	```sh
+	Welcome to Buildroot
+	buildroot login: root
+	$ sdio
+	```
+- available commands:
+	. sdio
+	. lights
+	. gpio
+	. i2c
+	. pwm
+	. battery
+	. uart
+
 - To stop qemu do:
 
 	Ctrl-a-x
