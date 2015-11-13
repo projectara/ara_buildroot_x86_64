@@ -10,7 +10,7 @@ module_addr() {
 ADDR=0x$(cat /proc/modules | grep ${1} | head -1 | grep -o '[^x]*$' | cut -d ' ' -f 1)
 }
 
-MODULES="greybus gb-es1 gb-phy gb-loopback gb-raw gb-power-supply gb-vibrator gb-light"
+MODULES="greybus gb-es2 gb-phy gb-loopback gb-raw gb-power-supply gb-vibrator gb-light"
 case "$1" in
     start)
 	echo "Starting greybus..."
