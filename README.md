@@ -155,7 +155,7 @@ copy/paste to the gdb prompt every time you run it, ex:
 
 ```sh
 add-symbol-file /path/to/buildroot/output/build/greybus-master/greybus.o 0xffffffffa001e000
-add-symbol-file /path/to/buildroot/output/build/greybus-master/gb-es1.o 0xffffffffa002c000
+add-symbol-file /path/to/buildroot/output/build/greybus-master/gb-es2.o 0xffffffffa002c000
 add-symbol-file /path/to/buildroot/output/build/greybus-master/gb-phy.o 0xffffffffa0035000
 add-symbol-file /path/to/buildroot/output/build/greybus-master/gb-loopback.o 0xffffffffa0041000
 add-symbol-file /path/to/buildroot/output/build/greybus-master/gb-raw.o 0xffffffffa0047000
