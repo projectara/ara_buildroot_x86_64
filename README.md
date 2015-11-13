@@ -100,7 +100,7 @@ already running and will replace the simulated module by the new one.
 	. gpio
 	. i2c
 	. pwm
-	. battery
+	. power-supply
 	. uart
 
 - To stop qemu do:
@@ -159,7 +159,7 @@ add-symbol-file /path/to/buildroot/output/build/greybus-master/gb-es1.o 0xffffff
 add-symbol-file /path/to/buildroot/output/build/greybus-master/gb-phy.o 0xffffffffa0035000
 add-symbol-file /path/to/buildroot/output/build/greybus-master/gb-loopback.o 0xffffffffa0041000
 add-symbol-file /path/to/buildroot/output/build/greybus-master/gb-raw.o 0xffffffffa0047000
-add-symbol-file /path/to/buildroot/output/build/greybus-master/gb-battery.o 0xffffffffa004b000
+add-symbol-file /path/to/buildroot/output/build/greybus-master/gb-power-supply.o 0xffffffffa004b000
 add-symbol-file /path/to/buildroot/output/build/greybus-master/gb-vibrator.o 0xffffffffa004f000
 add-symbol-file /path/to/buildroot/output/build/greybus-master/gb-light.o 0xffffffffa0053000
 ```
