@@ -10,7 +10,9 @@ module_addr() {
 ADDR=0x$(cat /proc/modules | grep ${1} | head -1 | grep -o '[^x]*$' | cut -d ' ' -f 1)
 }
 
-MODULES="greybus gb-es2 gb-phy gb-loopback gb-raw gb-power-supply gb-vibrator gb-light"
+KERN_VER=`uname -r`
+MODULES="$(ls /lib/modules/$KERN_VER/kernel/drivers/greybus/)"
+
 case "$1" in
     start)
 	echo "Starting greybus..."
@@ -25,6 +27,7 @@ case "$1" in
 
         for m in ${MODULES}; do
             mod=$(echo ${m} | tr '-' '_')
+            mod=${mod%.*}
             module_addr ${mod}
             echo "add-symbol-file $GB/${m}.o ${ADDR}"
         done
