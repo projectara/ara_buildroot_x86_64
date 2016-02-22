@@ -7,7 +7,7 @@ MODULE=$(basename $0)
 # first run the necessary gbsim setup, if it is not already running
 pidof gbsim >/dev/null
 if [[ $? -ne 0 ]] ; then
-    g&
+    g
 else
     #remove previous inserted module
     rm -rf /tmp/gbsim/hotplug-module/*

@@ -54,13 +54,13 @@ $ qemu-system-x86_64  -M pc -kernel output/images/bzImage \
 
 There already an alias for the above command:
 
-g&
+g
 
 Example output:
 ```sh
 Welcome to Buildroot
 buildroot login: root
-$ g&
+$ g
 hotplug_basedir /tmp/gbsim
 verbose 1
 file system registered
