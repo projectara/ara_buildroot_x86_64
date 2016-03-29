@@ -1,0 +1,9 @@
+#!/bin/sh
+
+gpio
+sleep 3
+echo 506 > /sys/class/gpio/export
+echo 507 > /sys/class/gpio/export
+echo in > /sys/class/gpio/gpio506/direction
+echo out > /sys/class/gpio/gpio507/direction
+echo rising > /sys/class/gpio/gpio506/edge
