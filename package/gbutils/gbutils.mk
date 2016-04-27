@@ -15,6 +15,7 @@ GBUTILS_SITE = $(call github,projectara,gb-utils,$(GBUTILS_VERSION))
 #GBUTILS_SITE_METHOD = local
 
 define GBUTILS_INSTALL_TARGET_CMDS
+        cd $(TARGET_DIR) && ln -s . system
 	cd $(@D) && cp lsgb $(TARGET_DIR)/usr/bin/
 endef
 
