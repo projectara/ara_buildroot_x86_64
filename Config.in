@@ -1,3 +1,4 @@
 source "$BR2_EXTERNAL/package/greybus/Config.in"
 source "$BR2_EXTERNAL/package/gbsim/Config.in"
 source "$BR2_EXTERNAL/package/libusbg/Config.in"
+source "$BR2_EXTERNAL/package/gbutils/Config.in"
