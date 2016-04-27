@@ -28,6 +28,7 @@ case "$1" in
         for m in ${MODULES}; do
             mod=$(echo ${m} | tr '-' '_')
             mod=${mod%.*}
+            m=${m%.*}
             module_addr ${mod}
             echo "add-symbol-file $GB/${m}.o ${ADDR}"
         done
