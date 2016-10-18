@@ -1,4 +1,4 @@
-source "$BR2_EXTERNAL/package/greybus/Config.in"
-source "$BR2_EXTERNAL/package/gbsim/Config.in"
-source "$BR2_EXTERNAL/package/libusbg/Config.in"
-source "$BR2_EXTERNAL/package/gbutils/Config.in"
+source "$BR2_EXTERNAL_ARA_PATH/package/greybus/Config.in"
+source "$BR2_EXTERNAL_ARA_PATH/package/gbsim/Config.in"
+source "$BR2_EXTERNAL_ARA_PATH/package/libusbg/Config.in"
+source "$BR2_EXTERNAL_ARA_PATH/package/gbutils/Config.in"

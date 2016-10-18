@@ -109,7 +109,7 @@ already running and will replace the simulated module by the new one.
 
 # Modifying #
 
-* in BR2_EXTERNAL/board/ara/overlay/etc is the etc directory with the init
+* in BR2_EXTERNAL_ARA_PATH/board/ara/overlay/etc is the etc directory with the init
   script to load modules and manifestos.
 
 * rebuild individual components (all in buildroot directory):
