@@ -5,4 +5,4 @@ gbsim -h /tmp/gbsim -v &
 sleep 1
 
 # Suppress useless SVC pings for gbsim
-echo 0 > /sys/bus/greybus/devices/1-svc/watchdog
+echo 0 > /sys/bus/greybus/devices/greybus1/1-svc/watchdog
