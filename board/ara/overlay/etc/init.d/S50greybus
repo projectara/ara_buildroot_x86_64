@@ -11,7 +11,7 @@ ADDR=0x$(cat /proc/modules | grep ${1} | head -1 | grep -o '[^x]*$' | cut -d ' '
 }
 
 KERN_VER=`uname -r`
-MODULES="$(ls /lib/modules/$KERN_VER/kernel/drivers/greybus/)"
+MODULES="$(ls /lib/modules/$KERN_VER/kernel/drivers/staging/greybus/)"
 
 case "$1" in
     start)

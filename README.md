@@ -17,7 +17,6 @@ This will not run inside another virtual host (virtualbox, vmware, etc).
 Use absolute paths:
 
 ```sh
-	$ export GBDIR=/path/to/greybus
 	$ export GBSIMDIR=/path/to/gbsim
 
 	$ export BR2_EXTERNAL=/path/to/ara_buildroot_x86_64
@@ -29,7 +28,7 @@ Use absolute paths:
 go to buildroot cloned directory and run:
 
 ```sh
-	$ make ara_qemu_x86_64_defconfig
+	$ make ara_qemu_x86_64_staging_next_defconfig
 	$ make
 ```
 
@@ -95,6 +94,7 @@ already running and will replace the simulated module by the new one.
 	$ sdio
 	```
 - available commands:
+	```sh
 	. sdio
 	. lights
 	. gpio
@@ -102,6 +102,7 @@ already running and will replace the simulated module by the new one.
 	. pwm
 	. power-supply
 	. uart
+	```
 
 - To stop qemu do:
 
@@ -114,9 +115,9 @@ already running and will replace the simulated module by the new one.
 
 * rebuild individual components (all in buildroot directory):
 
-	- greybus:
+	- kernel / greybus:
 	```sh
-		$ make greybus-dirclean; make greybus; make
+		$ make linux-rebuild; make
 	```
 
 	- gbsim:
@@ -140,7 +141,7 @@ go to step Run.
 
 To attach a gdb you can use a gdbinit file already in the overlay:
 ```sh
-	$ cd /path/to/buildroot/output/build/linux-4.1.5
+	$ cd /path/to/buildroot/output/build/linux-staging-next
 	$ gdb -x $BR2_EXTERNAL/board/ara/qemu_x86_64/gdbinit
 ```
 
@@ -154,12 +155,27 @@ modules, you can add them to the gdbinit as they should not change that much or
 copy/paste to the gdb prompt every time you run it, ex:
 
 ```sh
-add-symbol-file /path/to/buildroot/output/build/greybus-master/greybus.o 0xffffffffa001e000
-add-symbol-file /path/to/buildroot/output/build/greybus-master/gb-es2.o 0xffffffffa002c000
-add-symbol-file /path/to/buildroot/output/build/greybus-master/gb-phy.o 0xffffffffa0035000
-add-symbol-file /path/to/buildroot/output/build/greybus-master/gb-loopback.o 0xffffffffa0041000
-add-symbol-file /path/to/buildroot/output/build/greybus-master/gb-raw.o 0xffffffffa0047000
-add-symbol-file /path/to/buildroot/output/build/greybus-master/gb-power-supply.o 0xffffffffa004b000
-add-symbol-file /path/to/buildroot/output/build/greybus-master/gb-vibrator.o 0xffffffffa004f000
-add-symbol-file /path/to/buildroot/output/build/greybus-master/gb-light.o 0xffffffffa0053000
+add-symbol-file /path/to/buildroot/output/build/linux-staging-next/drivers/staging/greybus/gb-audio-apbridgea.o 0xffffffffa003f000
+add-symbol-file /path/to/buildroot/output/build/linux-staging-next/drivers/staging/greybus/gb-audio-gb.o 0xffffffffa0043000
+add-symbol-file /path/to/buildroot/output/build/linux-staging-next/drivers/staging/greybus/gb-audio-manager.o 0xffffffffa0047000
+add-symbol-file /path/to/buildroot/output/build/linux-staging-next/drivers/staging/greybus/gb-bootrom.o 0xffffffffa004c000
+add-symbol-file /path/to/buildroot/output/build/linux-staging-next/drivers/staging/greybus/gb-es2.o 0xffffffffa0051000
+add-symbol-file /path/to/buildroot/output/build/linux-staging-next/drivers/staging/greybus/gb-firmware.o 0xffffffffa005c000
+add-symbol-file /path/to/buildroot/output/build/linux-staging-next/drivers/staging/greybus/gb-gbphy.o 0xffffffffa0064000
+add-symbol-file /path/to/buildroot/output/build/linux-staging-next/drivers/staging/greybus/gb-gpio.o 0xffffffffa0069000
+add-symbol-file /path/to/buildroot/output/build/linux-staging-next/drivers/staging/greybus/gb-hid.o 0xffffffffa006e000
+add-symbol-file /path/to/buildroot/output/build/linux-staging-next/drivers/staging/greybus/gb-i2c.o 0xffffffffa0073000
+add-symbol-file /path/to/buildroot/output/build/linux-staging-next/drivers/staging/greybus/gb-light.o 0xffffffffa0077000
+add-symbol-file /path/to/buildroot/output/build/linux-staging-next/drivers/staging/greybus/gb-log.o 0xffffffffa007d000
+add-symbol-file /path/to/buildroot/output/build/linux-staging-next/drivers/staging/greybus/gb-loopback.o 0xffffffffa0081000
+add-symbol-file /path/to/buildroot/output/build/linux-staging-next/drivers/staging/greybus/gb-power-supply.o 0xffffffffa008b000
+add-symbol-file /path/to/buildroot/output/build/linux-staging-next/drivers/staging/greybus/gb-pwm.o 0xffffffffa0090000
+add-symbol-file /path/to/buildroot/output/build/linux-staging-next/drivers/staging/greybus/gb-raw.o 0xffffffffa0094000
+add-symbol-file /path/to/buildroot/output/build/linux-staging-next/drivers/staging/greybus/gb-sdio.o 0xffffffffa0098000
+add-symbol-file /path/to/buildroot/output/build/linux-staging-next/drivers/staging/greybus/gb-spi.o 0xffffffffa009d000
+add-symbol-file /path/to/buildroot/output/build/linux-staging-next/drivers/staging/greybus/gb-spilib.o 0xffffffffa0058000
+add-symbol-file /path/to/buildroot/output/build/linux-staging-next/drivers/staging/greybus/gb-uart.o 0xffffffffa00a1000
+add-symbol-file /path/to/buildroot/output/build/linux-staging-next/drivers/staging/greybus/gb-usb.o 0xffffffffa00a8000
+add-symbol-file /path/to/buildroot/output/build/linux-staging-next/drivers/staging/greybus/gb-vibrator.o 0xffffffffa00ac000
+add-symbol-file /path/to/buildroot/output/build/linux-staging-next/drivers/staging/greybus/greybus.o 0xffffffffa0024000
 ```
