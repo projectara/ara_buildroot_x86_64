@@ -15,4 +15,4 @@ fi
 sleep 1
 
 # then copy the manifest file to the default target
-cp /etc/IID1-simple-${MODULE}-module.mnfb /tmp/gbsim/hotplug-module/
+cp /etc/manifests/simple-${MODULE}-module.mnfb /tmp/gbsim/hotplug-module/
