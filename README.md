@@ -102,6 +102,7 @@ already running and will replace the simulated module by the new one.
 	. pwm
 	. power-supply
 	. uart
+	. loopback
 	```
 
 - To stop qemu do:
